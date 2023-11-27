@@ -4,7 +4,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
-
+import cookieParser from 'cookie-parser';
 
 mongoose.connect(process.env.MONGODB).then(() => {
     console.log('Connected to Database');
@@ -16,6 +16,7 @@ const app = express();
 
 app.use(express.json());
 
+app.use(cookieParser());
 
 app.listen(3000,() => {
     console.log('listening on port 3000!!');
